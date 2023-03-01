@@ -16,6 +16,15 @@ public class Alt_Character : MonoBehaviour
 
     void LateUpdate()
     {
-        _Navmesh.SetDestination(Target.transform.position); // Navmesh e pozisyon böyle atıyoruz.
+        _Navmesh.SetDestination(Target.transform.position);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("igneliKutu"))
+        {
+            GameObject.FindWithTag("GameManager").GetComponent<GameManager>().AnlikKarakterSayisi--; 
+            gameObject.SetActive(false);
+        }
     }
 }
