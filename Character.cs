@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    public GameManager _GameManager;
     private void FixedUpdate()
     {
         transform.Translate(Vector3.forward * .5f * Time.deltaTime);
@@ -21,6 +22,14 @@ public class Character : MonoBehaviour
             {
                 transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + .1f, transform.position.y, transform.position.z), .3f);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "x2" || other.name =="+3")
+        {
+            _GameManager.AdamYonetimi(other.name,other.transform);
         }
     }
 }
